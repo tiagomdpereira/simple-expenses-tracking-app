@@ -15,7 +15,7 @@ A command-line personal finance application for tracking daily expenses with bud
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/tiagomdpereira/simple-expenses-tracking-app.git
 cd simple-expenses-tracking-app
 ```
 
