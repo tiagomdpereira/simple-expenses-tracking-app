@@ -32,6 +32,8 @@ def main():
         
         action: str = actions[action_index]
 
+        print("\n")
+
         # complete the action that the user chose.
         match action:
             case "Add Expense":
@@ -69,11 +71,13 @@ def main():
             case "Left App":
                 print("Manage your finances wisely!")
                 break
+    
+        print("\n")
 
 
 def get_user_expense() -> Expense:
 
-    print("🎯 Getting User Expense")
+    print("Getting User Expense")
 
     expense_amount: float = float(input("Enter expense amount: "))
     expense_name: str = input("Enter expense name: ")
@@ -118,11 +122,11 @@ def get_user_expense() -> Expense:
 def save_expense_to_file(expense: Expense, expense_file_path: str) -> None:
     with open(expense_file_path, "a") as f:
         f.write(f"{expense.name},{expense.category},{expense.amount},{expense.date.day},{expense.date.month},{expense.date.year}\n")
-    print("🎯 Saving User Expense")
+    print("Saving User Expense")
 
 
 def summarize_expenses(file_path: str, budget: float):
-    print("🎯 Summarizing User Expenses")
+    print("Summarizing User Expenses")
     expenses: list[Expense] = []
     with open(file_path, "r") as f:
         lines = f.readlines()
@@ -140,17 +144,17 @@ def summarize_expenses(file_path: str, budget: float):
     # show expenses by category
     print("Expenses By Category")
     for category, amount in amount_by_category.items():
-        print(f"    {category}: ${amount:.2f}")
+        print(f"    {category}: €{amount:.2f}")
     
     # show total spent
     total_spent: int = 0
     for expense in expenses:
         total_spent += expense.amount
-    print(f"Total spent: ${total_spent:.2f}")
+    print(f"Total spent: €{total_spent:.2f}")
 
     # show remaining budget
     remaining_budget = budget - total_spent
-    print(f"Remaining budget: ${remaining_budget:.2f}")
+    print(f"Remaining budget: €{remaining_budget:.2f}")
 
     # show how much we have to spend per day
     now: datetime = datetime.now()
@@ -158,7 +162,7 @@ def summarize_expenses(file_path: str, budget: float):
     days_left_in_month = days_in_month - now.day
     print(f"Remaining days in the current month: {days_left_in_month}")
     remaining_daily_budget = remaining_budget / days_left_in_month
-    print(f"Remaining budget per day until the end of the month: ${remaining_daily_budget:.2f}")
+    print(f"Remaining budget per day until the end of the month: €{remaining_daily_budget:.2f}")
 
 
 def get_last_expenses(file_path: str) -> None:

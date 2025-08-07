@@ -8,4 +8,4 @@ class Expense:
         self.date = date
     
     def __repr__(self):
-        return f"<{self.name}, {self.category}, ${self.amount:.2f}, {self.date.day}, {self.date.month}, {self.date.year}>"
+        return f"<{self.name}, {self.category}, €{self.amount:.2f}, {self.date.day}, {self.date.month}, {self.date.year}>"
